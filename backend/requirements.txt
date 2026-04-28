@@ -6,4 +6,5 @@ passlib[bcrypt]
 python-multipart
 email-validator
 reportlab
+google-generativeai
 python-dotenv

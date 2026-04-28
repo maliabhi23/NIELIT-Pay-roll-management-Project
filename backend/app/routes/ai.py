@@ -1,6 +1,7 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
 from datetime import datetime
+import requests
 
 from app.database import get_db
 from app.models.employee import Employee
@@ -15,7 +16,8 @@ router = APIRouter(
 
 @router.post("/ask")
 def ask_ai(data: dict, db: Session = Depends(get_db)):
-    question = data.get("question", "").lower()
+    question = data.get("question", "")
+    history = data.get("history", [])
 
     employee_count = db.query(Employee).count()
 
@@ -33,72 +35,70 @@ def ask_ai(data: dict, db: Session = Depends(get_db)):
         row.net_salary for row in payroll_rows
     )
 
-    if "total employees" in question:
-        return {
-            "answer": f"Total employees are {employee_count}"
-        }
+    highest_salary = 0
+    highest_emp = None
+    highest_emp_name = "Unknown"
 
-    if "pending leave" in question:
-        return {
-            "answer": f"Pending leave requests are {pending_leaves}"
-        }
-
-    if "total payroll" in question or "salary paid" in question:
-        return {
-            "answer": (
-                f"Total salary paid in {current_month} "
-                f"is ₹ {round(total_salary,2)}"
-            )
-        }
-
-    if "highest salary" in question:
-        if not payroll_rows:
-            return {
-                "answer": "No payroll processed this month"
-            }
-
-        highest = max(
+    if payroll_rows:
+        top = max(
             payroll_rows,
             key=lambda x: x.net_salary
         )
 
-        return {
-            "answer": (
-                f"Highest salary this month is ₹ "
-                f"{round(highest.net_salary,2)} "
-                f"for employee id {highest.employee_id}"
-            )
-        }
+        highest_salary = top.net_salary
+        highest_emp = top.employee_id
 
-    if "most leave" in question:
-        leaves = db.query(Leave).all()
+        emp = db.query(Employee).filter(
+            Employee.id == top.employee_id
+        ).first()
 
-        counter = {}
-        for row in leaves:
-            counter[row.employee_id] = (
-                counter.get(row.employee_id, 0) + 1
-            )
+        if emp:
+            highest_emp_name = emp.name
 
-        if not counter:
-            return {
-                "answer": "No leave records found"
-            }
+    chat_history = "\n".join([
+        f"{m['role']}: {m['text']}"
+        for m in history[-10:]
+    ])
 
-        top = max(
-            counter,
-            key=counter.get
+    prompt = f"""
+You are payroll AI assistant.
+
+Payroll information:
+Total employees: {employee_count}
+Pending leaves: {pending_leaves}
+Current month: {current_month}
+Total salary paid: ₹{round(total_salary,2)}
+Highest salary: ₹{round(highest_salary,2)}
+Highest salary employee name: {highest_emp_name}
+
+Conversation:
+{chat_history}
+
+Reply professionally and clearly.
+"""
+
+    try:
+        res = requests.post(
+            "http://localhost:11434/api/generate",
+            json={
+                "model": "llama3.2:3b",
+                "prompt": prompt,
+                "stream": False
+            },
+            timeout=120
         )
 
-        return {
-            "answer": (
-                f"Employee id {top} "
-                f"has highest leaves ({counter[top]})"
-            )
-        }
+        result = res.json()
+
+        answer = (
+            result.get("response")
+            or result.get("message", {}).get("content")
+            or "No response"
+        )
+
+    except Exception as e:
+        answer = f"Ollama Error: {str(e)}"
 
     return {
-        "answer": (
-            "I can answer: total employees, pending leaves, "
-            "highest salary, total payroll, most leave"
-        )
+        "answer": answer
     }

@@ -1,6 +1,6 @@
 # NIELIT Payroll Portal
 
-A full-stack Payroll Management System developed as a Final Year Major Project for automating employee payroll operations, leave approvals, salary processing, PDF payslip generation, email automation, reporting, and AI-assisted administrative insights.
+A full-stack AI-powered Payroll Management System developed for automating employee payroll operations, leave approvals, salary processing, PDF payslip generation, email automation, reporting, and Generative AI-assisted administrative insights.
 
 ---
 
@@ -12,13 +12,14 @@ The system enables administrators to:
 
 * Manage employees
 * Process salaries automatically
-* Approve / reject leave requests
+* Approve / Reject leave requests
 * Generate professional salary slips in PDF format
 * Send payslips through email
 * View monthly reports
-* Interact with an AI Assistant for payroll insights
+* Interact with an AI Payroll Assistant
+* Generate payroll insights using Generative AI
 
-This project demonstrates real-world HR and payroll workflow automation.
+This project demonstrates real-world HR, Payroll Automation, and AI integration.
 
 ---
 
@@ -40,20 +41,24 @@ This project demonstrates real-world HR and payroll workflow automation.
 * Email Payslip Automation
 * Reports Module
 * Monthly Salary Summary
-* AI Payroll Assistant
+* AI Payroll Chat Assistant
 * Logout
 
 ---
 
-## Payroll Calculation
+# Payroll Calculation
 
 Net Salary is calculated automatically:
 
+```text
 Net Salary = Gross Salary - PF - Tax - Leave Deduction
+```
 
 Where:
 
+```text
 Gross Salary = Basic Salary + HRA + DA + Bonus
+```
 
 Deductions:
 
@@ -63,7 +68,7 @@ Deductions:
 
 ---
 
-# AI Assistant Module
+# AI Assistant Module (Generative AI)
 
 The AI Assistant enables admin to ask:
 
@@ -72,11 +77,33 @@ The AI Assistant enables admin to ask:
 * Pending leaves?
 * Total payroll this month?
 * Who took most leaves?
+* Explain payroll increase this month
+* Generate payroll summary report
 
-The assistant analyzes payroll database records and returns intelligent responses.
+## AI Working
 
-Future enhancement:
-Integration with real Generative AI / LLM models.
+```text
+Payroll Database
+      ↓
+Context Building
+      ↓
+Prompt Engineering
+      ↓
+Google Gemini API
+      ↓
+Natural Language AI Response
+```
+
+## Gemini Integration Features
+
+* Payroll insight generation
+* Salary trend explanation
+* Natural language reporting
+* Employee payroll analytics
+* Smart administrative Q&A
+* AI-based summary generation
+
+This converts the project into a **real Generative AI Powered Payroll Management System**.
 
 ---
 
@@ -90,6 +117,8 @@ Integration with real Generative AI / LLM models.
 * JWT Authentication
 * ReportLab PDF Generation
 * SMTP Email Automation
+* REST API
+* Generative AI Integration
 
 ## Frontend
 
@@ -98,6 +127,13 @@ Integration with real Generative AI / LLM models.
 * Axios
 * React Toastify
 * CSS
+
+## AI Stack
+
+* Google Gemini API
+* Prompt Engineering
+* Context-aware Querying
+* Natural Language Response Generation
 
 ---
 
@@ -111,90 +147,40 @@ Integration with real Generative AI / LLM models.
 6. Email Notification Module
 7. Reports Module
 8. AI Assistant Module
+9. Generative AI Module
 
 ---
 
 # Project Structure
 
 ```text
-## Project Structure
-
-```text
 NIELIT-PAYROLL-PORTAL/
-│
 ├── backend/
-│   │
 │   ├── app/
-│   │   │
 │   │   ├── models/
-│   │   │   ├── __init__.py
-│   │   │   ├── attendance.py
-│   │   │   ├── employee.py
-│   │   │   ├── leave.py
-│   │   │   ├── payroll.py
-│   │   │   └── user.py
-│   │   │
 │   │   ├── routes/
-│   │   │   ├── ai.py
-│   │   │   ├── auth.py
-│   │   │   ├── employee.py
-│   │   │   ├── leave.py
-│   │   │   ├── payroll.py
-│   │   │   └── reports.py
-│   │   │
-│   │   ├── schemas/
-│   │   │
 │   │   ├── services/
-│   │   │   ├── email_service.py
-│   │   │   └── pdf_service.py
-│   │   │
 │   │   ├── utils/
-│   │   │   └── security.py
-│   │   │
 │   │   ├── config.py
 │   │   ├── database.py
 │   │   └── main.py
-│   │
 │   ├── generated_payslips/
 │   ├── .env
 │   ├── payroll.db
 │   └── requirements.txt
 │
 ├── frontend/
-│   │
-│   ├── public/
-│   │
 │   ├── src/
-│   │   │
-│   │   ├── assets/
-│   │   │
 │   │   ├── components/
-│   │   │   ├── AIAssistant.jsx
-│   │   │   ├── Dashboard.jsx
-│   │   │   ├── EmployeeTable.jsx
-│   │   │   ├── LeaveTable.jsx
-│   │   │   ├── Login.jsx
-│   │   │   ├── PayrollTable.jsx
-│   │   │   └── Sidebar.jsx
-│   │   │
 │   │   ├── api.js
-│   │   ├── App.css
 │   │   ├── App.jsx
-│   │   ├── index.css
 │   │   ├── main.jsx
 │   │   └── styles.css
-│   │
-│   ├── .gitignore
-│   ├── eslint.config.js
-│   ├── index.html
-│   ├── package-lock.json
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── README.md
-│
 └── .gitignore
-```
 ```
 
 ---
@@ -225,10 +211,8 @@ http://127.0.0.1:8000/docs
 
 Create Admin:
 
-POST:
-
 ```text
-/auth/seed-admin
+POST /auth/seed-admin
 ```
 
 Default Credentials:
@@ -258,14 +242,15 @@ http://localhost:5173
 
 # Future Scope
 
-* Employee Portal
+* Employee Self Service Portal
 * Attendance Tracking
+* Biometric Integration
 * Bank API Integration
-* Real Generative AI Chatbot
 * Fraud Detection
-* Salary Forecasting
+* Salary Forecasting using ML
 * Department Analytics
 * Cloud Deployment
+* AI Decision Support System
 
 ---
 
@@ -274,12 +259,18 @@ http://localhost:5173
 This project combines:
 
 * Software Engineering
-* Artificial Intelligence concepts
+* Artificial Intelligence
+* Generative AI
 * Web Development
 * Database Management
 * Automation
+* Human Resource Analytics
 
+Suitable for:
+**Final Year BTech AIML Major Project**
 
 ---
-NIELIT Payroll Portal
 
+# Project Title Suggestion
+
+**AI-Powered Payroll Management System using FastAPI, React and Google Gemini**
