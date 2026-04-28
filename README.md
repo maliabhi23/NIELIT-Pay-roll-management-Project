@@ -50,13 +50,13 @@ This project demonstrates real-world HR, Payroll Automation, and AI integration.
 
 Net Salary is calculated automatically:
 
-```text
+```text id="rd1"
 Net Salary = Gross Salary - PF - Tax - Leave Deduction
 ```
 
 Where:
 
-```text
+```text id="rd2"
 Gross Salary = Basic Salary + HRA + DA + Bonus
 ```
 
@@ -82,7 +82,7 @@ The AI Assistant enables admin to ask:
 
 ## AI Working
 
-```text
+```text id="rd3"
 Payroll Database
       ↓
 Context Building
@@ -137,6 +137,58 @@ This converts the project into a **real Generative AI Powered Payroll Management
 
 ---
 
+# Google Gemini API Configuration
+
+To enable Generative AI features:
+
+Create:
+
+```text id="rd4"
+backend/.env
+```
+
+Add:
+
+```env id="rd5"
+GEMINI_API_KEY=YOUR_GEMINI_API_KEY
+SECRET_KEY=nielit_secret_key
+
+SMTP_HOST=smtp.gmail.com
+SMTP_PORT=587
+SMTP_EMAIL=your_email@gmail.com
+SMTP_PASSWORD=your_app_password
+```
+
+Install dependency:
+
+```bash id="rd6"
+pip install google-generativeai
+```
+
+or:
+
+```bash id="rd7"
+pip install -r requirements.txt
+```
+
+How it works:
+
+```text id="rd8"
+Admin asks question
+      ↓
+FastAPI receives query
+      ↓
+Payroll database context collected
+      ↓
+Prompt sent to Google Gemini API
+      ↓
+Gemini generates intelligent answer
+      ↓
+Answer shown in AI Chat UI
+```
+
+---
+
 # System Modules
 
 1. Authentication Module
@@ -153,7 +205,7 @@ This converts the project into a **real Generative AI Powered Payroll Management
 
 # Project Structure
 
-```text
+```text id="rd9"
 NIELIT-PAYROLL-PORTAL/
 ├── backend/
 │   ├── app/
@@ -189,7 +241,7 @@ NIELIT-PAYROLL-PORTAL/
 
 ## Backend Setup
 
-```bash
+```bash id="rd10"
 cd backend
 python -m venv venv
 venv\Scripts\activate
@@ -199,25 +251,25 @@ uvicorn app.main:app --reload
 
 Backend URL:
 
-```text
+```text id="rd11"
 http://127.0.0.1:8000
 ```
 
 Swagger Docs:
 
-```text
+```text id="rd12"
 http://127.0.0.1:8000/docs
 ```
 
 Create Admin:
 
-```text
+```text id="rd13"
 POST /auth/seed-admin
 ```
 
 Default Credentials:
 
-```text
+```text id="rd14"
 username: admin
 password: admin123
 ```
@@ -226,7 +278,7 @@ password: admin123
 
 ## Frontend Setup
 
-```bash
+```bash id="rd15"
 cd frontend
 npm install
 npm run dev
@@ -234,7 +286,7 @@ npm run dev
 
 Frontend URL:
 
-```text
+```text id="rd16"
 http://localhost:5173
 ```
 
@@ -251,23 +303,6 @@ http://localhost:5173
 * Department Analytics
 * Cloud Deployment
 * AI Decision Support System
-
----
-
-# Academic Relevance
-
-This project combines:
-
-* Software Engineering
-* Artificial Intelligence
-* Generative AI
-* Web Development
-* Database Management
-* Automation
-* Human Resource Analytics
-
-Suitable for:
-**Final Year BTech AIML Major Project**
 
 ---
 

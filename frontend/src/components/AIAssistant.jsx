@@ -166,6 +166,9 @@ export default function AIAssistant() {
           Send
         </button>
       </div>
+
     </div>
-  );
+ 
+);
+
 } 
