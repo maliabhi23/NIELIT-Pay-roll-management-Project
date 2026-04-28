@@ -1,0 +1,70 @@
+```gitignore
+# =========================
+# Python
+# =========================
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+*.pyd
+
+# Virtual Environment
+venv/
+.env/
+.venv/
+
+# Environment files
+.env
+*.env
+
+# SQLite Database
+*.db
+*.sqlite3
+
+# Generated PDF Payslips
+backend/generated_payslips/
+generated_payslips/
+
+# Logs
+*.log
+
+# Coverage / cache
+.pytest_cache/
+.coverage
+htmlcov/
+.mypy_cache/
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# =========================
+# Node / React / Vite
+# =========================
+node_modules/
+dist/
+build/
+.vite/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Cache
+.cache/
+
+# Misc
+*.tmp
+*.bak
+
+# Ignore local secrets
+backend/.env
+frontend/.env
+```
