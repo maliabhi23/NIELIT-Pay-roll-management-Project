@@ -13,7 +13,7 @@ from app.routes.ai import router as ai_router
 
 
 app = FastAPI(
-    title="NIELIT Payroll Portal",
+    title="NIELITPAY360  Payroll Portal",
     version="1.0"
 )
 

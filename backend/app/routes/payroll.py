@@ -36,7 +36,7 @@ def process_salary(employee_id: int, db: Session = Depends(get_db)):
         tax=tax,
         leave_deduction=leave_deduction,
         net_salary=net_salary,
-        month="April 2026"
+        month="May 2026"
     )
 
     db.add(row)

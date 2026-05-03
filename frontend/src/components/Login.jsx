@@ -28,7 +28,7 @@ export default function Login({ setLoggedIn, setRole }) {
   return (
     <div className="login-page">
       <div className="login-box">
-        <h1>NIELIT Payroll Portal</h1>
+        <h1>NIELITPAY360 </h1>
 
         <input
           placeholder="Username"

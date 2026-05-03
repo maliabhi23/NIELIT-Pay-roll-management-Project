@@ -1,7 +1,7 @@
 export default function Sidebar({ setPage, logout }) {
   return (
     <div className="sidebar">
-      <h2>NIELIT</h2>
+      <h2>NIELITPAY360 </h2>
 
       <div className="menu">
         <button onClick={() => setPage("dashboard")}>

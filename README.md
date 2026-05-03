@@ -1,4 +1,4 @@
-# NIELIT Payroll Portal
+# NIELITPAY360  Payroll Portal
 
 A full-stack AI-powered Payroll Management System developed for automating employee payroll operations, leave approvals, salary processing, PDF payslip generation, email automation, reporting, and Generative AI-assisted administrative insights.
 
@@ -206,33 +206,82 @@ Answer shown in AI Chat UI
 # Project Structure
 
 ```text id="rd9"
+```text
 NIELIT-PAYROLL-PORTAL/
+│
 ├── backend/
+│   │
 │   ├── app/
+│   │   │
 │   │   ├── models/
+│   │   │   ├── __init__.py
+│   │   │   ├── attendance.py
+│   │   │   ├── employee.py
+│   │   │   ├── leave.py
+│   │   │   ├── payroll.py
+│   │   │   └── user.py
+│   │   │
 │   │   ├── routes/
+│   │   │   ├── ai.py
+│   │   │   ├── auth.py
+│   │   │   ├── employee.py
+│   │   │   ├── leave.py
+│   │   │   ├── payroll.py
+│   │   │   └── reports.py
+│   │   │
+│   │   ├── schemas/
+│   │   │
 │   │   ├── services/
+│   │   │   ├── email_service.py
+│   │   │   └── pdf_service.py
+│   │   │
 │   │   ├── utils/
+│   │   │   └── security.py
+│   │   │
 │   │   ├── config.py
 │   │   ├── database.py
 │   │   └── main.py
+│   │
 │   ├── generated_payslips/
 │   ├── .env
 │   ├── payroll.db
 │   └── requirements.txt
 │
 ├── frontend/
+│   │
+│   ├── public/
+│   │
 │   ├── src/
+│   │   │
+│   │   ├── assets/
+│   │   │
 │   │   ├── components/
+│   │   │   ├── AIAssistant.jsx
+│   │   │   ├── Dashboard.jsx
+│   │   │   ├── EmployeeTable.jsx
+│   │   │   ├── LeaveTable.jsx
+│   │   │   ├── Login.jsx
+│   │   │   ├── PayrollTable.jsx
+│   │   │   └── Sidebar.jsx
+│   │   │
 │   │   ├── api.js
+│   │   ├── App.css
 │   │   ├── App.jsx
+│   │   ├── index.css
 │   │   ├── main.jsx
 │   │   └── styles.css
+│   │
+│   ├── .gitignore
+│   ├── eslint.config.js
+│   ├── index.html
+│   ├── package-lock.json
 │   ├── package.json
 │   └── vite.config.js
 │
 ├── README.md
+│
 └── .gitignore
+```
 ```
 
 ---

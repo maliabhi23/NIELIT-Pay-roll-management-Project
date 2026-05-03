@@ -160,15 +160,11 @@ export default function AIAssistant() {
         <button
           onClick={askAI}
           disabled={loading}
-          style={{ widt
-            h: "120px" }}
+          style={{ width: "120px" }}
         >
           Send
         </button>
       </div>
-
     </div>
- 
-);
-
+  );
 } 

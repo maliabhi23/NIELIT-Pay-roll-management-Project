@@ -77,7 +77,6 @@ export default function PayrollTable() {
               <th>Month</th>
             </tr>
           </thead>
-
           <tbody>
             {payroll.map((e, i) => (
               <tr key={i}>

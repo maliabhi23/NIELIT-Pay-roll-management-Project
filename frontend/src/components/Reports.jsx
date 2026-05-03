@@ -40,7 +40,6 @@ export default function Reports() {
             <td>Current Month</td>
             <td>{data.current_month}</td>
           </tr>
-
           <tr>
             <td>Salary Paid</td>
             <td>₹ {data.current_month_salary_paid}</td>
